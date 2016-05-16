@@ -44,7 +44,7 @@ contexts:
           pop: true
         - include: scope:source.php
 
-    - match: '\@\b(e(mpty|nd(if|for(else|each)|while|can|for|unless|block|p(artial|ush))|lse)|s(ection|how|top)|continue|break|parent|overwrite|append)\b'
+    - match: '\@\b(e(mpty|nd(if|for(else|each)|while|can|for|unless|block|p(artial|ush)|section)|lse)|s(ection|how|top)|continue|break|parent|overwrite|append)\b'
       captures:
         0: entity.name.tag.block.any.html
         1: constant.other.inline-data.html
