@@ -52,15 +52,12 @@ contexts:
 
   raw:
     - match: '@\{\{\{?-?'
-      captures:
-        0: entity.name.tag.block.any.html
+      scope: entity.name.tag.block.any.html
       push:
         - meta_scope: scope:text.html.basic
         - meta_content_scope: scope:text.html.basic
         - match: '-?\}?\}\}'
-          captures:
-            0: entity.name.tag.block.any.html
-            1: entity.name.tag.block.any.html
+          scope: entity.name.tag.block.any.html
           pop: true
 
   function-parameters:
@@ -69,21 +66,18 @@ contexts:
 
   statements:
     - match: '\{(!!)|(\{\{\{?)-?'
-      captures:
-        0: entity.name.tag.block.any.html
+      scope: entity.name.tag.block.any.html
       push:
         - meta_scope: meta.embedded.line.php
         - meta_content_scope: source.php
         - match: '-?(\}?\}\})|(!!)\}'
-          captures:
-            0: entity.name.tag.block.any.html
+          scope: entity.name.tag.block.any.html
           pop: true
         - include: scope:source.php
 
   inline-php:
     - match: <\?(?i:php|=)?
-      captures:
-        0: punctuation.section.embedded.begin.php
+      scope: punctuation.section.embedded.begin.php
       push:
         - meta_scope: meta.embedded.line.php
         - meta_content_scope: source.php
