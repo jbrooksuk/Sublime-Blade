@@ -1,6 +1,6 @@
 <snippet>
     <content><![CDATA[
-@lang('${1:stringName}')
+@lang('${1:stringName}'${2:,['$3' => '$4']})
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
     <tabTrigger>bllang</tabTrigger>
