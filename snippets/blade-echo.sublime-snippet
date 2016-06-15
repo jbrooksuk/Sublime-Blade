@@ -1,6 +1,6 @@
 <snippet>
     <content><![CDATA[
-{{ $1${2: or '${3:default}' }}
+{{ $1${2: or '${3:default}'} }}
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
     <tabTrigger>blecho</tabTrigger>
