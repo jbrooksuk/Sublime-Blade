@@ -1,0 +1,10 @@
+<!-- Source from https://gist.github.com/adamwathan/723a3ad31e1586b66450 -->
+<snippet>
+    <content><![CDATA[
+trans_choice('${1:stringName}', ${2:1})
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>transchoice</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>
