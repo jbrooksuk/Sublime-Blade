@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+@choice('${1:stringName}', ${2:1}${3:,['$4' => '$5']});
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>blchoice</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.blade</scope>
+</snippet>
