@@ -4,7 +4,7 @@ name: Laravel Blade
 file_extensions:
   - blade
   - blade.php
-scope: source.blade
+scope: text.blade
 
 contexts:
   main:
@@ -18,15 +18,15 @@ contexts:
       - include: inline-php
 
   comments:
-    - match: \{\{--
-      scope: punctuation.definition.comment.php.blade
+    - match: '{{--'
+      scope: punctuation.definition.comment.begin.html
       push:
-        - meta_scope: comment.block.php.blade
-        - match: --\}\}
-          scope: punctuation.definition.comment.php.blade
-          pop: true
-        - match: --
-          scope: invalid.illegal.bad-comments-or-CDATA.html
+        - meta_scope: comment.block.blade
+      with_prototype:
+      - match: '--}}'
+        captures:
+          0: punctuation.definition.comment.end.html
+        pop: true
 
   keywords:
     - match: \@\b(debug|set|i(f|nject|nclude)|elseif|for(else|each)|for|while|extends|unless|each|yield|lang|choice|section|render|block|can|p(artial|ush)|hasSection|stack)
@@ -34,17 +34,15 @@ contexts:
         0: entity.name.tag.block.any.html
         1: constant.other.inline-data.html
         2: constant.other.inline-data.html
-    - match: \(
-      scope: punctuation.definition.group.begin.php
       push:
-        - meta_scope: custom.compiler.blade.php
-        - meta_content_scope: source.php
-        - match: '\)'
-          scope: punctuation.definition.group.end.php
+        - meta_scope: text.html.blade
+        - meta_content_scope: text.html.blade
+        - match: '(?<=\))'
           pop: true
-        - include: scope:source.php
+        - include: 'scope:source.php'
 
     - match: '\@\b(e(mpty|nd(if|for(else|each)|while|can|for|unless|block|p(artial|ush)|section)|lse)|s(ection|how|top)|continue|break|parent|overwrite|append)\b'
+      scope: text.html.blade
       captures:
         0: entity.name.tag.block.any.html
         1: constant.other.inline-data.html
@@ -52,12 +50,15 @@ contexts:
 
   raw:
     - match: '@\{\{\{?-?'
-      scope: entity.name.tag.block.any.html
+      captures:
+        0: entity.name.tag.block.any.html
       push:
-        - meta_scope: scope:text.html.basic
-        - meta_content_scope: scope:text.html.basic
+        - meta_scope: text.html.blade
+        - meta_content_scope: text.html.blade
         - match: '-?\}?\}\}'
-          scope: entity.name.tag.block.any.html
+          captures:
+            0: entity.name.tag.block.any.html
+            1: entity.name.tag.block.any.html
           pop: true
 
   function-parameters:
