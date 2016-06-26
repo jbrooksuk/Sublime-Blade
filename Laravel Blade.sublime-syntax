@@ -4,7 +4,7 @@ name: Laravel Blade
 file_extensions:
   - blade
   - blade.php
-scope: text.blade
+scope: source.blade
 
 contexts:
   main:
