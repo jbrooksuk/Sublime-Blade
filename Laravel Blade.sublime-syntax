@@ -48,6 +48,18 @@ contexts:
         1: constant.other.inline-data.html
       pop: false
 
+    - match: (\s{0}|^)(\@)\b([a-zA-Z_]+)\b(?=(|\s*|)\()
+      captures:
+        0: entity.name.tag.block.any.html
+        1: constant.other.inline-data.html
+        2: constant.other.inline-data.html
+      push:
+        - meta_scope: text.html.blade
+        - meta_content_scope: text.html.blade
+        - match: '(?<=\))'
+          pop: true
+        - include: 'scope:source.php'
+
   raw:
     - match: '@\{\{\{?-?'
       captures:
