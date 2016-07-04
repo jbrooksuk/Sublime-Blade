@@ -127,4 +127,8 @@ This comment will not be in the rendered HTML
     @datetime($var)
 
 {{-- Vue tests --}}
-<div @click="delete('something')"></div>
+<div class="ohhai" @click="delete('something')">
+    <span v-if="!notSomething">@{{someVariable.name}}</span>
+    <span v-if="@{{someVariable}}">@{{someOtherVariable.name}}</span>
+    to @{{someMessage}}
+</div>

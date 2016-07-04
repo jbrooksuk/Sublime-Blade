@@ -48,6 +48,33 @@ contexts:
         1: constant.other.inline-data.html
       pop: false
 
+    - match: (\s{0}|^)(\@)\b([a-zA-Z_]+)\b(?=(|\s*|)\()
+      captures:
+        0: entity.name.tag.block.any.html
+        1: constant.other.inline-data.html
+        2: constant.other.inline-data.html
+      push:
+        - meta_scope: text.html.blade
+        - meta_content_scope: text.html.blade
+        - match: '(?<=\))'
+          pop: true
+        - include: 'scope:source.php'
+
+    - match: (\@)(\b[a-zA-Z_]+\b)(\=)(\")(.+)(\()(\')(.+)(\')(\))(\")
+      captures:
+        0: entity.name.tag.block.any.html
+        1: punctuation.definition.variable.js
+        2: variable.other.conditional.js
+        3: meta.class.js
+        4: meta.class.js
+        5: entity.name.type.class.js
+        6: meta.class.js
+        7: meta.class.js
+        8: entity.name.type.class.js
+        9: meta.class.js
+        10: meta.class.js
+        11: meta.class.js
+
   raw:
     - match: '@\{\{\{?-?'
       captures:
