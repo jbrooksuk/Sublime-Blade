@@ -1,6 +1,7 @@
 {{-- Echo Data --}}
 Hello, {{ $name }}.
-The current UNIX timestamp is {{ time() }}.
+
+The current UNIX timestamp is {{ time('now') }}.
 
 {{-- Echoing Data After Checking For Existence --}}
 {{ isset($name) ? $name : 'Default' }}
